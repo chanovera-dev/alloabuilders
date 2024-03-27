@@ -82,11 +82,14 @@ add_action("wp_footer", "ver_archivos_cargados");
 
 
 
-function rankya_remove_global_styles() {
-    remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
-    remove_action( 'in_admin_header', 'wp_global_styles_render_svg_filters' );
+add_action('wp_print_styles', 'rankya_remove_styles', 100000);
+add_action('wp_print_footer_scripts', 'rankya_remove_styles', 100000);
+function rankya_remove_styles(){
+wp_deregister_style('wp-block-library');
+wp_dequeue_style('wp-block-library');
+wp_deregister_style('wp-block-library-theme');
+wp_dequeue_style('wp-block-library-theme');
 }
-add_action('after_setup_theme', 'rankya_remove_global_styles', 10, 0);
 /**
  * Disable the emoji's
  */
