@@ -1,11 +1,7 @@
 <?php
 
 // carga componentes (estilos, javascript, etc) en el header
-function load_components_header() {
-    wp_dequeue_style( 'wp-block-library' );
-    wp_deregister_script('wp-polyfill');
-    wp_deregister_script('regenerator-runtime');
-}
+function load_components_header() {}
 add_action( 'wp_enqueue_scripts', 'load_components_header' );
 
 
@@ -51,3 +47,15 @@ function alloabuilders_theme_support(){
 	add_theme_support('custom-background');
 } 
 add_action('after_setup_theme', 'alloabuilders_theme_support');
+
+
+
+// mueve los scripts del head al footer
+function mover_jquery_al_footer( $wp_scripts ) {
+    if ( ! is_admin() ) {
+        $wp_scripts->add_data( 'jquery', 'group', 1 );
+        $wp_scripts->add_data( 'jquery-core', 'group', 1 );
+        $wp_scripts->add_data( 'jquery-migrate', 'group', 1 );
+    }
+}
+add_action( 'wp_default_scripts', 'mover_jquery_al_footer' );
