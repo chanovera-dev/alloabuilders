@@ -22,3 +22,8 @@ add_filter('wp_resource_hints', function (array $urls, string $relation): array 
     });
     return $urls;
 }, 10, 2);
+
+
+
+// elimina wlwmanifest.xml
+remove_action( 'wp_head', 'wlwmanifest_link' );
