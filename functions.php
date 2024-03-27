@@ -82,6 +82,7 @@ add_action("wp_footer", "ver_archivos_cargados");
 
 
 
+remove_filter( 'render_block', 'wp_render_duotone_support', 10);
 /**
  * Disable the emoji's
  */
