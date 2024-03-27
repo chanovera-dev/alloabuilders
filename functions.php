@@ -82,8 +82,11 @@ add_action("wp_footer", "ver_archivos_cargados");
 
 
 
-// Remove unwanted SVG filter injection WP
-remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
+function rankya_remove_global_styles() {
+    remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
+    remove_action( 'in_admin_header', 'wp_global_styles_render_svg_filters' );
+}
+add_action('after_setup_theme', 'rankya_remove_global_styles', 10, 0);
 /**
  * Disable the emoji's
  */
