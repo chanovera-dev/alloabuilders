@@ -27,3 +27,8 @@ add_filter('wp_resource_hints', function (array $urls, string $relation): array 
 
 // elimina wlwmanifest.xml
 remove_action( 'wp_head', 'wlwmanifest_link' );
+
+
+
+// elimina el enlace corto
+remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0 );
