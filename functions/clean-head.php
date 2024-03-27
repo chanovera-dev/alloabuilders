@@ -1,5 +1,11 @@
 <?php
 
+// elimina el número de versión de wordpress
+remove_action( 'wp_head', 'wp_generator' );
+add_filter( 'the_generator', '__return_null' );
+
+
+
 // Disable the Wordpress emoji's
 function disable_emojis() {
     remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
