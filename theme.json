@@ -8,6 +8,8 @@
     "settings": {
         "appearanceTools": true,
         "color": {
+            "duotone": [],
+            "customDuotone": false,
             "palette": [
                 {
 					"color": "#ffffff",
