@@ -32,3 +32,19 @@ remove_action( 'wp_head', 'wlwmanifest_link' );
 
 // elimina el enlace corto
 remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0 );
+
+
+
+// elimina los enlaces de fedd RSS
+function itsme_disable_feed() {
+    wp_die( __( '¡No hay nada por aquí! Vuelve a la página de <a href="'. esc_url( home_url( '/' ) ) .'">inicio</a>!' ) );
+}
+add_action('do_feed', 'itsme_disable_feed', 1);
+add_action('do_feed_rdf', 'itsme_disable_feed', 1);
+add_action('do_feed_rss', 'itsme_disable_feed', 1);
+add_action('do_feed_rss2', 'itsme_disable_feed', 1);
+add_action('do_feed_atom', 'itsme_disable_feed', 1);
+add_action('do_feed_rss2_comments', 'itsme_disable_feed', 1);
+add_action('do_feed_atom_comments', 'itsme_disable_feed', 1);
+remove_action( 'wp_head', 'feed_links_extra', 3 );
+remove_action( 'wp_head', 'feed_links', 2 );
