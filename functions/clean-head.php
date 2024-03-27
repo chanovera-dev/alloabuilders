@@ -29,6 +29,10 @@ add_filter('wp_resource_hints', function (array $urls, string $relation): array 
 remove_action( 'wp_head', 'wlwmanifest_link' );
 
 
+/* Quitar RSD */
+remove_action('wp_head', 'rsd_link');
+
+
 
 // elimina el enlace corto
 remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0 );
