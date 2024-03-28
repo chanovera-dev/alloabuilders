@@ -3,11 +3,7 @@
 
     echo '
     <main id="main">';
-        include(TEMPLATEPATH . '/sections/front-page/hero.php');
-
-        // if ( get_posts() == null ) : else: include(TEMPLATEPATH . '/sections/front-page/blog.php'); endif;
-
-        echo '
+        echo '<h1>' . esc_html__('Welcome to Alloa Builders', 'alloabuilders') . '</h1>
     </main>';
 
 get_footer();
